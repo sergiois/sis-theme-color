@@ -3,23 +3,28 @@
  * @package     Joomla.Plugin
  * @subpackage  System.SISThemeColor
  *
- * @copyright	Copyright © 2018 SergioIglesiasNET - All rights reserved.
+ * @copyright	Copyright © 2023 SergioIglesiasNET - All rights reserved.
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Plugin\CMSPlugin;
+
 defined('_JEXEC') or die;
 
-class PlgSystemSisthemeColor extends JPlugin
+class PlgSystemSisthemeColor extends CMSPlugin
 {
 	public function onBeforeCompileHead()
 	{
-		if (JFactory::getApplication()->isClient('administrator'))
+		$app = Factory::getApplication();
+
+		if ($app->isClient('administrator') || $app->get('offline', '0'))
 		{
-			return true;
+			return;
 		}
 		
-		$doc = JFactory::getDocument();
+		$doc = Factory::getDocument();
 		$doc->addCustomTag( '<meta name="theme-color" content="'.$this->params->get('themecolor', '#ffffff').'"/>' );
 	}
 }

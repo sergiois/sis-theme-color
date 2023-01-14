@@ -14,6 +14,9 @@ Joomla System Plugin to color the browser bar on mobile devices
 ### Version 1.0.0 [2018-08-28]
 * **[Added]** Select color of the browser bar (Android)
 
+### Version 1.0.1 [2023-01-14]
+* **[Added]** Joomla 4 compatibility
+
 * * *
 
 ## Copyright & License
